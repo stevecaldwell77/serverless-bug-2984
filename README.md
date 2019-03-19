@@ -34,10 +34,14 @@ However - **THIS IS THE BUG** - serverless says that everything was removed corr
     ..
     Serverless: Stack removal finished...
 
-You can verify that `service1` is still around, and see that `StackStatusReason` is set to `Export ServerlessBug2984BucketArn cannot be deleted as it is in use by serverless-bug-2984-service2-dev`:
+You can verify that `service1` is still around:
 
     aws cloudformation describe-stacks \
         --stack-name serverless-bug-2984-service1-dev
+
+Note that the stack's `StackStatusReason` is set to:
+
+    Export ServerlessBug2984BucketArn cannot be deleted as it is in use by serverless-bug-2984-service2-dev
 
 ## Cleanup
 
