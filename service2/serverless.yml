@@ -1,0 +1,14 @@
+service: serverless-bug-2984-service2
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  iamRoleStatements:
+    - Effect: Allow
+      Action: "s3:*"
+      Resource:
+        Fn::ImportValue: ServerlessBug2984BucketArn
+
+functions:
+  hello:
+    handler: handler.hello

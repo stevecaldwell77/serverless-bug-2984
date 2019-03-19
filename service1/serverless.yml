@@ -1,0 +1,24 @@
+service: serverless-bug-2984-service1
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+functions:
+  hello:
+    handler: handler.hello
+
+resources:
+  Resources:
+    S3Bucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        AccessControl: Private
+  Outputs:
+    S3BucketArn:
+      Export:
+        Name: ServerlessBug2984BucketArn
+      Value:
+        Fn::GetAtt:
+          - S3Bucket
+          - Arn
